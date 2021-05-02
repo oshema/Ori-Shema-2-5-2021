@@ -5,9 +5,9 @@ import {
   Switch,
   Route,
 } from "react-router-dom";
-import NavBar from './components/navBar/navBar';
 import Main from './pages/main/main';
 import Favorites from './pages/favorites';
+import NavBar from './components/navBar/navBar';
 
 
 function App() {

@@ -6,11 +6,4 @@
     width: 100vw;
 }
 
-.searchBar {
-    position: absolute;
-    top: 350px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 800px;
-}
 

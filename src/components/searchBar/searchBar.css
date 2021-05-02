@@ -1,0 +1,28 @@
+.searchBarContainer{
+    position: absolute;
+    top: 220px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+
+}
+
+.searchBar {
+    width: 800px;
+    background-color: rgba(148, 240, 240, 0.075);
+}
+
+.searchButton{
+    border-radius: 0 50% 50% 0;
+    padding-right: 5px;
+}
+
+button {
+    background: transparent;
+    border: 0px solid transparent;
+  }
+
+button:hover {
+    background: transparent;
+    cursor: pointer;
+  }
