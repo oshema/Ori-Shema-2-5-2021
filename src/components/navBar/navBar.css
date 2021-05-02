@@ -1,0 +1,29 @@
+.nav{
+    position: absolute;
+    width: 100vw;
+    height: 70px;
+    background-color: rgba(88, 174, 231, 0.329);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.199);
+    -webkit-box-shadow: 0px 4px 11px -2px rgba(0,0,0,0.57);
+    -moz-box-shadow: 0px 4px 11px -2px rgba(0,0,0,0.57);
+    box-shadow: 0px 4px 11px -2px rgba(0,0,0,0.57);
+    display: flex;
+  }
+  
+  .logo{
+    background-image: url(../../images/logo.png);
+    background-size: cover;
+    height: 70px;
+    width: 110px;
+    opacity: 0.5;
+  }
+
+  .homeLink{
+    color: inherit;
+    text-decoration: inherit;
+  }
+
+  .favoritesLink{
+    color: inherit;
+    text-decoration: inherit;
+  }
