@@ -3,11 +3,12 @@ import './searchBar.css'
 import axios from 'axios'
 import TextField from '@material-ui/core/TextField';
 import SearchSharpIcon from '@material-ui/icons/SearchSharp';
-import ButtonBase from '@material-ui/core/ButtonBase';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 function SearchBar() {
 
     const [searchQuery, setSearchQuery] = useState('')
+    const [loading, setLoading] = useState(false)
 
 
     const autoCompleteAPI = async query => {
@@ -17,15 +18,27 @@ function SearchBar() {
         const API_CALL = `${BASE_URL}?q=${query}&apikey=${API_KEY}`
 
         if (query.length > 1) {
+            setLoading(true)
             try {
                 const response = await axios.get(API_CALL)
-                console.log(response)
+                const locationList = extractSearchList(response.data)
             }
             //dont forget to handle error
             catch (err) {
                 console.log(err)
             }
+            setLoading(false)
         }
+    }
+
+    const extractSearchList = (data) => {
+        return data.map(result => {
+            const country = result.Country.LocalizedName
+            const city = result.LocalizedName
+            const key = result.Key
+            return { country, city, key }
+        })
+
     }
 
     return (
@@ -40,12 +53,8 @@ function SearchBar() {
                     value={searchQuery}
                     onChange={e => { autoCompleteAPI(e.target.value) }}
                 />
-                <ButtonBase>
-                    <SearchSharpIcon
-                        className="searchButton"
-                        style={{ fontSize: "56px" }}
-                    />
-                </ButtonBase>
+                {loading && <CircularProgress size={100} className="loading" />}
+
 
             </div>
         </div>
