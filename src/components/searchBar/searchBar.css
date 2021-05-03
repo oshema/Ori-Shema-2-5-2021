@@ -1,12 +1,6 @@
-.searchBarContainer{
-    position: absolute;
-    top: 220px;
-    left: 50%;
-    transform: translateX(-50%);
-}
 
 .searchBar {
-    width: 800px;
+    width: 600px;
     background-color: rgba(148, 240, 240, 0.075);
 }
 
