@@ -1,18 +1,18 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchWeatherData } from '../../redux/actions/currentWeatherActions'
+import { fetchForecastData } from '../../redux/actions/fiveDayForecastActions'
 import { makeStyles } from '@material-ui/core/styles';
 import ListItem from '@material-ui/core/ListItem';
 import ButtonBase from '@material-ui/core/ButtonBase';
 
 function SearchItem({ city, country, locationKey, clearList }) {
     const dispatch = useDispatch()
-    const state = useSelector(state => state.loading)
-
 
     const fetchWeather = () => {
         clearList('')
         dispatch(fetchWeatherData(locationKey, city))
+        dispatch(fetchForecastData(locationKey))
     }
 
     // Material UI Styling //

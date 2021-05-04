@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './main.css';
 import SearchBar from '../../components/searchBar/searchBar';
 import CurrentWeather from '../../components/currentWeather/currentWeather';
+import WeatherForecast from '../../components/weatherForecast/weatherForecast';
 
 
 function Main() {
@@ -16,6 +17,7 @@ function Main() {
                     <SearchBar />
                 </div>
             </div>
+            <WeatherForecast />
         </div>
     )
 }
