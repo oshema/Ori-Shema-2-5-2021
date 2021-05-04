@@ -6,12 +6,13 @@ export const fetchWeatherRequest = () => {
     }
 }
 
-export const fetchWeatherSuccess = (weatherData, location) => {
+export const fetchWeatherSuccess = (weatherData, location, key) => {
     return {
         type: 'FETCH_WEATHER_SUCCESS',
         payload: {
             data: weatherData,
-            location
+            location,
+            key
         }
     }
 }
@@ -29,7 +30,7 @@ export const fetchWeatherData = (locationKey, city) => {
             dispatch(fetchWeatherRequest())
             const API_KEY = process.env.REACT_APP_WEATHER_API_KEY;
             const response = await axios.get(`http://dataservice.accuweather.com/currentconditions/v1/${locationKey}?apikey=${API_KEY}`)
-            dispatch(fetchWeatherSuccess(response.data[0], city))
+            dispatch(fetchWeatherSuccess(response.data[0], city, locationKey))
         }
         catch (err) {
             dispatch(fetchWeatherFailure(err))

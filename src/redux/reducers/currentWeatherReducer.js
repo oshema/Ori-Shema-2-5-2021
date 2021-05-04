@@ -2,6 +2,7 @@ const initialState = {
     loading: false,
     weatherData: '',
     location: '',
+    key: '',
     error: ''
 }
 
@@ -18,6 +19,7 @@ const weatherReducer = (state = initialState, action) => {
                 loading: false,
                 weatherData: action.payload.data,
                 location: action.payload.location,
+                key: action.payload.key,
                 error: ""
             }
         case 'FETCH_WEATHER_FAILURE':
@@ -25,6 +27,8 @@ const weatherReducer = (state = initialState, action) => {
                 ...state,
                 loading: false,
                 weatherData: [],
+                location: '',
+                key: '',
                 error: action.error
             }
         default:

@@ -1,31 +1,29 @@
 import React, { useEffect, useState } from 'react';
 import './currentWeather.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchWeatherData } from '../../redux/actions/currentWeatherActions'
-import { fetchFavoritesData } from '../../redux/actions/favoritesActions'
-import { addLocationToFavorites } from '../../redux/actions/favoritesActions'
+import { fetchWeatherData } from '../../redux/actions/currentWeatherActions';
 import { makeStyles } from '@material-ui/core/styles';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Card from '@material-ui/core/Card';
+import FavoriteButton from '../favoriteButton/favoriteButton';
 
 function CurrentWeather() {
 
     const dispatch = useDispatch()
-
     const selectedWeather = useSelector(state => state.currentWeather)
-    const { loading, weatherData, location, error } = selectedWeather;
+    const { loading, weatherData, location, key, error } = selectedWeather;
+
     let imgURL = ''
     if (weatherData.WeatherIcon < 10)
         imgURL = `https://developer.accuweather.com/sites/default/files/0${weatherData.WeatherIcon}-s.png`
     else
         imgURL = `https://developer.accuweather.com/sites/default/files/${weatherData.WeatherIcon}-s.png`
 
+    //Set default forecast to Tel Aviv
     useEffect(() => {
-        //Set default forecast to Tel Aviv
-        dispatch(fetchFavoritesData())
-        dispatch(fetchWeatherData("215854", "Tel Aviv"))
+        if (!key)
+            dispatch(fetchWeatherData("215854", "Tel Aviv"))
     }, [])
-
 
     // Material UI Styling //
     const useStyles = makeStyles({
@@ -46,20 +44,25 @@ function CurrentWeather() {
                 <CircularProgress size={200} color="secondary" />
                 :
                 weatherData &&
-                <Card className={classes.root}>
-                    <div >
-                        <div>
-                            {`${location}`}
+                <>
+                    <Card className={classes.root}>
+                        <div >
+                            <div>
+                                {`${location}`}
+                            </div>
+                            <div>
+                                {weatherData.Temperature.Metric.Value}
+                            </div>
+                            <div>
+                                {weatherData.WeatherText}
+                            </div>
                         </div>
-                        <div>
-                            {weatherData.Temperature.Metric.Value}
-                        </div>
-                        <div>
-                            {weatherData.WeatherText}
-                        </div>
-                    </div>
-                    <img className="icon" src={`${imgURL}`} alt={`${weatherData.WeatherText}`} />
-                </Card>
+                        <img className="icon" src={`${imgURL}`} alt={`${weatherData.WeatherText}`} />
+                        {console.log(key, "ppp")}
+                        <FavoriteButton locationKey={key} />
+                    </Card>
+                </>
+
 
             }
         </div>

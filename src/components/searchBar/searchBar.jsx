@@ -2,11 +2,12 @@ import React, { useEffect, useState } from 'react';
 import './searchBar.css';
 import SearchItem from '../searchItem/searchItem';
 import axios from 'axios';
+import { makeStyles } from '@material-ui/core/styles';
+import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 import TextField from '@material-ui/core/TextField';
 import SearchSharpIcon from '@material-ui/icons/SearchSharp';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import List from '@material-ui/core/List';
-import { makeStyles } from '@material-ui/core/styles';
 import { ButtonBase } from '@material-ui/core';
 
 
@@ -52,7 +53,7 @@ function SearchBar() {
             width: '100%',
             maxWidth: 600,
             overflow: 'auto',
-            maxHeight: 230,
+            maxHeight: 195,
             backgroundColor: "rgba(148, 240, 240, 0.075);",
         },
         searchIcon: {
@@ -68,7 +69,6 @@ function SearchBar() {
         <div>
             <div>
                 <div>
-
                     <TextField
                         className="searchBar"
                         label="What's The Weather In..."
@@ -85,16 +85,18 @@ function SearchBar() {
                     <CircularProgress size={100} className="loading" />
                     :
                     searchList &&
-                    <List className={classes.root} >
-                        {searchList.map(item =>
-                            <SearchItem
-                                key={item.key}
-                                city={item.city}
-                                country={item.country}
-                                locationKey={item.key}
-                                clearList={setSearchList}
-                            />)}
-                    </List>
+                    <ClickAwayListener onClickAway={() => setSearchList('')}>
+                        <List className={classes.root} >
+                            {searchList.map(item =>
+                                <SearchItem
+                                    key={item.key}
+                                    city={item.city}
+                                    country={item.country}
+                                    locationKey={item.key}
+                                    clearList={setSearchList}
+                                />)}
+                        </List>
+                    </ClickAwayListener>
                 }
             </div>
         </div>

@@ -53,8 +53,7 @@ export const fetchFavoritesFailure = (error) => {
 
 export const fetchFavoritesData = () => {
     return async (dispatch, getState) => {
-        //const favoritesKeys = getState().favorites.locationKeys
-        const favoritesKeys = ['111111', '222222']
+        const favoritesKeys = getState().favorites.locationKeys
         const API_KEY = process.env.REACT_APP_WEATHER_API_KEY;
         dispatch(fetchFavoritesRequest())
         const favoritesDataPromises = favoritesKeys.map(async key => {

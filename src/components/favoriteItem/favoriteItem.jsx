@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
+import './favoriteItem.css';
+import FavoriteButton from '../favoriteButton/favoriteButton';
 
 function FavoriteItem(props) {
 
-    const { temp, iconNumber, text } = props
+    const { temp, iconNumber, text, locationKey } = props
 
     const [temperature, setTemperature] = useState('')
     const [info, setInfo] = useState('')
@@ -24,9 +26,12 @@ function FavoriteItem(props) {
     }
 
     return (
-        <div>
+        <div className="favoriteItemLayout">
             <div>{`${temperature} / ${info}`}</div>
             <img src={`${img}`} alt={`${info}`} />
+            <div>
+                <FavoriteButton locationKey={locationKey} />
+            </div>
         </div>
     )
 }

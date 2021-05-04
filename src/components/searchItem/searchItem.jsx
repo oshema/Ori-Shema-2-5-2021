@@ -1,10 +1,13 @@
-import React from 'react'
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchWeatherData } from '../../redux/actions/currentWeatherActions'
-import { fetchForecastData } from '../../redux/actions/fiveDayForecastActions'
+import React from 'react';
+import './searchItem.css';
+import { useDispatch } from 'react-redux';
+import { fetchWeatherData } from '../../redux/actions/currentWeatherActions';
+import { fetchForecastData } from '../../redux/actions/fiveDayForecastActions';
 import { makeStyles } from '@material-ui/core/styles';
 import ListItem from '@material-ui/core/ListItem';
 import ButtonBase from '@material-ui/core/ButtonBase';
+import Divider from '@material-ui/core/Divider';
+import FavoriteButton from '../favoriteButton/favoriteButton';
 
 function SearchItem({ city, country, locationKey, clearList }) {
     const dispatch = useDispatch()
@@ -17,9 +20,9 @@ function SearchItem({ city, country, locationKey, clearList }) {
 
     // Material UI Styling //
     const useStyles = makeStyles((theme) => ({
-        root: {
-            height: 55,
-            width: 600,
+        listItem: {
+            height: 45,
+            width: 570,
             '&:hover': {
                 cursor: 'pointer',
                 backgroundColor: theme.palette.grey[100],
@@ -31,13 +34,19 @@ function SearchItem({ city, country, locationKey, clearList }) {
     // Material UI Styling //
 
     return (
-        <div>
-            <ButtonBase onClick={() => fetchWeather()}>
-                <ListItem divider className={classes.root}>
-                    {`${country} / ${city} - ${locationKey}`}
-                </ListItem>
-            </ButtonBase>
-        </div>
+        <>
+            <div className="searchItemLayout">
+                <ButtonBase onClick={() => fetchWeather()}>
+                    <ListItem className={classes.listItem}>
+                        <span>{`${country} / ${city} - ${locationKey}`}</span>
+                    </ListItem>
+                </ButtonBase>
+                <div className="favoriteButtonLayout">
+                    <FavoriteButton locationKey={locationKey} />
+                </div>
+            </div>
+            <Divider />
+        </>
     )
 }
 

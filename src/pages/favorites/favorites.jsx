@@ -10,10 +10,10 @@ function Favorites() {
     const dispatch = useDispatch()
 
     const state = useSelector(state => state.favorites)
-    const { favoritesData, loading } = state;
+    const { favoritesData, locationKeys, loading } = state;
 
     useEffect(() => {
-        dispatch(fetchFavoritesData)
+        dispatch(fetchFavoritesData())
     }, [])
 
     return (
@@ -26,7 +26,8 @@ function Favorites() {
                     (favoritesData.length != 0) &&
                     favoritesData.map((favorite, index) =>
                         <FavoriteItem
-                            key={index}
+                            key={locationKeys[index]}
+                            locationKey={locationKeys[index]}
                             temp={favorite.Temperature}
                             iconNumber={favorite.WeatherIcon}
                             text={favorite.WeatherText}
