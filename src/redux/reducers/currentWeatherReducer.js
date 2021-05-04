@@ -25,7 +25,7 @@ const weatherReducer = (state = initialState, action) => {
                 ...state,
                 loading: false,
                 weatherData: [],
-                error: action.payload
+                error: action.error
             }
         default:
             return state;

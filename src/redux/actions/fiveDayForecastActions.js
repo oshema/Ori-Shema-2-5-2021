@@ -16,7 +16,7 @@ export const fetchForecastSuccess = (forecastData) => {
 export const fetchForecastFailure = (error) => {
     return {
         type: 'FETCH_FORECAST_FAILURE',
-        payload: error
+        error
     }
 }
 

@@ -8,7 +8,7 @@ function NavBar() {
             <div className="logo">
             </div>
             <Link className="homeLink" to="/">Home</Link>
-            <Link className="favoritesLink" to="/favorites">favorites</Link>
+            <Link className="favoritesLink" to="/favorites">Favorites</Link>
         </div>
     )
 }

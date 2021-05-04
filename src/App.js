@@ -6,7 +6,7 @@ import {
   Route,
 } from "react-router-dom";
 import Main from './pages/main/main';
-import Favorites from './pages/favorites';
+import Favorites from './pages/favorites/favorites';
 import NavBar from './components/navBar/navBar';
 
 
@@ -20,7 +20,7 @@ function App() {
           <Route exact path="/">
             <Main />
           </Route>
-          <Route path="favorites">
+          <Route path="/favorites">
             <Favorites />
           </Route>
         </Switch>

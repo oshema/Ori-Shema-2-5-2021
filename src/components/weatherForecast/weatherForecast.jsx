@@ -11,7 +11,6 @@ function WeatherForecast() {
     const forecastList = useSelector(state => state.forecast)
     const { forecastData, loading } = forecastList;
 
-
     useEffect(() => {
         //Set default forecast to Tel Aviv
         dispatch(fetchForecastData("215854"))

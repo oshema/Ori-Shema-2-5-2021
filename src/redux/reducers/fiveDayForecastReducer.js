@@ -23,7 +23,7 @@ const forecastReducer = (state = initialState, action) => {
                 ...state,
                 loading: false,
                 forecastData: [],
-                error: action.payload
+                error: action.error
             }
         default:
             return state;

@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import './currentWeather.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchWeatherData } from '../../redux/actions/currentWeatherActions'
+import { fetchFavoritesData } from '../../redux/actions/favoritesActions'
+import { addLocationToFavorites } from '../../redux/actions/favoritesActions'
 import { makeStyles } from '@material-ui/core/styles';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Card from '@material-ui/core/Card';
@@ -9,6 +11,7 @@ import Card from '@material-ui/core/Card';
 function CurrentWeather() {
 
     const dispatch = useDispatch()
+
     const selectedWeather = useSelector(state => state.currentWeather)
     const { loading, weatherData, location, error } = selectedWeather;
     let imgURL = ''
@@ -19,6 +22,7 @@ function CurrentWeather() {
 
     useEffect(() => {
         //Set default forecast to Tel Aviv
+        dispatch(fetchFavoritesData())
         dispatch(fetchWeatherData("215854", "Tel Aviv"))
     }, [])
 

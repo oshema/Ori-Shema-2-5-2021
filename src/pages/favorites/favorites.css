@@ -1,0 +1,16 @@
+.mainImg { 
+    position: absolute;
+    background: linear-gradient(to right,#fdfdfd67,#fdfdfd67, #fdfdfd67), url(../../images/clouds-731260.jpg) no-repeat top center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    width: 100vw;
+    text-align: center;
+}
+
+.favoritesItemsLayout{
+    display: flex;
+    justify-content: space-evenly;
+    margin-left: 50%;
+    transform: translateX(-50%);
+}
