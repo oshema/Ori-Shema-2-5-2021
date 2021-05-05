@@ -30,7 +30,10 @@ export const fetchForecastData = (locationKey) => {
             dispatch(fetchForecastSuccess(response.data.DailyForecasts))
         }
         catch (err) {
-            dispatch(fetchForecastFailure(err))
+            if (err.response)
+                dispatch(fetchForecastFailure(err.response.data.Message))
+            else
+                dispatch(fetchForecastFailure(err.message))
         }
 
     }

@@ -11,6 +11,7 @@ import Card from '@material-ui/core/Card';
 import FavoriteButton from '../favoriteButton/favoriteButton';
 import { ButtonBase } from '@material-ui/core';
 
+
 function WeatherCard(props) {
     const { location,
         temperature,
@@ -19,7 +20,7 @@ function WeatherCard(props) {
         locationKey,
         buttonSize,
         isFavoriteButton = true,
-        clickable = false
+        clickable = false,
     } = props
 
     let history = useHistory();
@@ -49,11 +50,13 @@ function WeatherCard(props) {
     const useStyles = makeStyles({
         card: {
             marginTop: "20px",
-            maxWidth: "250px",
+            width: "250px",
             height: "240px",
             backgroundImage: weatherCSS,
             overflow: 'auto',
             '@media (max-width: 900px)': {
+                width: "auto",
+                maxWidth: "250px",
                 maxHeight: "150px",
                 marginTop: "80px",
                 marginLeft: "20px"
@@ -70,7 +73,6 @@ function WeatherCard(props) {
             },
             '@media (max-width: 750px)': {
                 height: "75px",
-
             }
         },
     })

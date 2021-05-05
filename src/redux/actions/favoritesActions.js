@@ -2,8 +2,12 @@ import axios from 'axios';
 
 export const addLocationToFavorites = (key, city) => {
     return async (dispatch, getState) => {
-        if (getState().favorites.locationKeys.length > 4)
+        if (getState().favorites.locationKeys.length > 4) {
             dispatch(addFavoriteFailure("You can only have 5 favorites"))
+            setTimeout(() => {
+                dispatch(addFavoriteFailure(""))
+            }, 3000);
+        }
         else
             dispatch(addFavorite(key, city))
     }
@@ -76,7 +80,12 @@ export const fetchFavoritesData = () => {
         if (isError.length === 0) {
             dispatch(fetchFavoritesSuccess(favoritesDataList))
         }
-        else
-            dispatch(fetchFavoritesFailure(isError[0].err))
+        else {
+            if (isError[0].err.response)
+                dispatch(fetchFavoritesFailure(isError[0].err.response.data.Message))
+            else {
+                dispatch(fetchFavoritesFailure(isError[0].err.message))
+            }
+        }
     }
 }

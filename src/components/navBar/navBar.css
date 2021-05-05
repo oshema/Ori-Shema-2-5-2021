@@ -58,3 +58,10 @@
     font-size: 15px;
   }
 }
+
+.favoritesError{
+  font-weight: 700;
+  color: rgb(218, 73, 73);
+  margin-left: 50px;
+  font-size: 20px;
+}

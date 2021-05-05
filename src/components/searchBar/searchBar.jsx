@@ -9,12 +9,14 @@ import SearchSharpIcon from '@material-ui/icons/SearchSharp';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import List from '@material-ui/core/List';
 import { ButtonBase } from '@material-ui/core';
+import ErrorHandler from '../../utilities/errorHandler';
 
 function SearchBar() {
 
     const [searchQuery, setSearchQuery] = useState('')
     const [loading, setLoading] = useState(false)
     const [searchList, setSearchList] = useState('')
+    const [error, setError] = useState("")
 
     const autoCompleteAPI = async query => {
         setSearchQuery(query)
@@ -28,11 +30,22 @@ function SearchBar() {
                 const extractedList = extractSearchList(response.data)
                 setSearchList(extractedList)
             }
-            //dont forget to handle error
             catch (err) {
-                console.log(err)
+                if (err.response) {
+                    setError(err.response.data.Message)
+                    setTimeout(() => {
+                        setError(false)
+                    }, 3000);
+                }
+                else {
+                    setError(err.message)
+                    setTimeout(() => {
+                        setError(false)
+                    }, 3000);
+                }
             }
             setLoading(false)
+
         }
     }
 
@@ -58,7 +71,6 @@ function SearchBar() {
                 maxWidth: 300,
                 maxHeight: 100
             },
-
         },
         searchIcon: {
             fontSize: "50px",
@@ -88,22 +100,25 @@ function SearchBar() {
                         <SearchSharpIcon className={classes.searchIcon} />
                     </ButtonBase>
                 </div>
-                {loading ?
-                    <CircularProgress size={100} className="loading" />
+                {error ?
+                    <ErrorHandler errorMessage={error} />
                     :
-                    searchList &&
-                    <ClickAwayListener onClickAway={() => setSearchList('')}>
-                        <List className={classes.list} >
-                            {searchList.map(item =>
-                                <SearchItem
-                                    key={item.key}
-                                    city={item.city}
-                                    country={item.country}
-                                    locationKey={item.key}
-                                    clearList={setSearchList}
-                                />)}
-                        </List>
-                    </ClickAwayListener>
+                    loading ?
+                        <CircularProgress size={100} className="loading" />
+                        :
+                        searchList &&
+                        <ClickAwayListener onClickAway={() => setSearchList('')}>
+                            <List className={classes.list} >
+                                {searchList.map(item =>
+                                    <SearchItem
+                                        key={item.key}
+                                        city={item.city}
+                                        country={item.country}
+                                        locationKey={item.key}
+                                        clearList={setSearchList}
+                                    />)}
+                            </List>
+                        </ClickAwayListener>
                 }
             </div>
         </div>

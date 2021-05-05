@@ -33,7 +33,10 @@ export const fetchWeatherData = (locationKey, city) => {
             dispatch(fetchWeatherSuccess(response.data[0], city, locationKey))
         }
         catch (err) {
-            dispatch(fetchWeatherFailure(err))
+            if (err.response)
+                dispatch(fetchWeatherFailure(err.response.data.Message))
+            else
+                dispatch(fetchWeatherFailure(err.message))
         }
 
     }
