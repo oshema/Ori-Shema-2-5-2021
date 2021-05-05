@@ -3,7 +3,6 @@
     width: 100vw;
     height: 70px;
     background-image: linear-gradient(120deg, #a1c4fda8 0%, #c2e9fbab 70%);
-
     border-bottom: 2px solid rgba(255, 255, 255, 0.199);
     -webkit-box-shadow: 0px 4px 11px -2px rgba(0,0,0,0.57);
     -moz-box-shadow: 0px 4px 11px -2px rgba(0,0,0,0.57);
@@ -11,21 +10,39 @@
     display: flex;
     z-index: 1;
   }
-  
-  .logo{
-    background-image: url(../../images/logo.png);
-    background-size: cover;
-    height: 70px;
-    width: 110px;
-    opacity: 0.5;
+
+  .manuContainer{
+    margin-left: 247px;
+    margin-top: 20px;
   }
 
   .homeLink{
     color: inherit;
     text-decoration: inherit;
+    font-size: 30px;
+    padding: 5px;
+    transition: 2s;
   }
 
+  .homeLink:hover{
+    background-color: rgba(144, 231, 253, 0.39);
+    -webkit-box-shadow: 2px 5px 18px -2px rgba(0,0,0,0.83);
+    -moz-box-shadow: 2px 5px 18px -2px rgba(0,0,0,0.83);
+    box-shadow: 2px 5px 18px -2px rgba(0,0,0,0.83);
+  }
+  
   .favoritesLink{
     color: inherit;
     text-decoration: inherit;
+    font-size: 30px;
+    margin-left: 50px;
+    padding: 5px;
+    transition: 2s;
+  }
+
+  .favoritesLink:hover{
+    background-color: rgba(147, 233, 255, 0.39);
+    -webkit-box-shadow: 2px 5px 18px -2px rgba(0,0,0,0.83);
+    -moz-box-shadow: 2px 5px 18px -2px rgba(0,0,0,0.83);
+    box-shadow: 2px 5px 18px -2px rgba(0,0,0,0.83);
   }
