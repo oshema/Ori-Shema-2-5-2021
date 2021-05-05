@@ -12,5 +12,14 @@
     justify-content: space-evenly;
     margin-left: 50%;
     transform: translateX(-50%);
+    margin-top: 20px;
+}
+
+.starImage{
+    width: 200px;
+    height: 200px;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    opacity: 0.5;
     margin-top: 100px;
 }

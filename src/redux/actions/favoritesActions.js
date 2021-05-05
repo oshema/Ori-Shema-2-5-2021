@@ -19,7 +19,6 @@ export const addFavorite = (locationKey, locationName) => {
     }
 }
 
-
 export const addFavoriteFailure = (error) => {
     return {
         type: 'ADD_FAVORITE_FAILURE',

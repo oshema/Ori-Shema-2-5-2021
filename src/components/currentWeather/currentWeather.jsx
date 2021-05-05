@@ -22,7 +22,7 @@ function CurrentWeather() {
             {loading ?
                 <CircularProgress size={200} color="secondary" />
                 :
-                weatherData && (key ?
+                weatherData.length !== 0 && (key ?
                     <WeatherCard
                         location={location}
                         temperature={weatherData.Temperature.Metric.Value}

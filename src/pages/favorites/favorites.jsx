@@ -28,6 +28,9 @@ function Favorites() {
 
     return (
         <div className="mainImg">
+            <div>
+                <img className="starImage" src={'./favorite_star.png'} />
+            </div>
             <div className="favoritesItemsLayout">
                 {loading ?
                     <CircularProgress size={200} color="secondary" />
@@ -50,13 +53,5 @@ function Favorites() {
         </div>
     )
 }
-
-/*
-locationKey={locationKeys[index]}
-                            locationName={locationNames[index]}
-                            temp={favorite.Temperature}
-                            iconNumber={favorite.WeatherIcon}
-                            text={favorite.WeatherText}
-                            */
 
 export default Favorites
