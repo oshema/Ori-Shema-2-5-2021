@@ -23,7 +23,7 @@
     padding: 5px;
     transition: 2s;
   }
-
+  
   .homeLink:hover{
     background-color: rgba(144, 231, 253, 0.39);
     -webkit-box-shadow: 2px 5px 18px -2px rgba(0,0,0,0.83);
@@ -39,10 +39,22 @@
     padding: 5px;
     transition: 2s;
   }
-
+  
   .favoritesLink:hover{
     background-color: rgba(147, 233, 255, 0.39);
     -webkit-box-shadow: 2px 5px 18px -2px rgba(0,0,0,0.83);
     -moz-box-shadow: 2px 5px 18px -2px rgba(0,0,0,0.83);
     box-shadow: 2px 5px 18px -2px rgba(0,0,0,0.83);
   }
+
+@media only screen and (max-width: 900px){
+  .manuContainer{
+      margin-left: 0px;
+  }
+  .homeLink{
+    font-size: 15px;
+  }
+  .favoritesLink{
+    font-size: 15px;
+  }
+}

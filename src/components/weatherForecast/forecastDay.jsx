@@ -14,6 +14,7 @@ function ForecastDay(props) {
     const [dayOfTheWeek, setDayOfTheWeek] = useState('')
     const [maxTemp, setMaxTemp] = useState('')
     const [minTemp, setMinTemp] = useState('')
+    const [avgT, setAvgT] = useState('')
     const [weatherCSS, setWeatherCSS] = useState("linear-gradient(to top, #fff1eb 0%, #ace0f9 100%)")
 
 
@@ -26,7 +27,9 @@ function ForecastDay(props) {
     }, [props])
 
     useEffect(() => {
-        const avgTemp = (maxTemp + minTemp) / 2
+        let avgTemp = (maxTemp + minTemp) / 2
+        avgTemp = Math.round(avgTemp * 10) / 10
+        setAvgT(avgTemp)
         const cssBackground = setCssOfWeather(avgTemp)
         setWeatherCSS(cssBackground)
     }, [maxTemp, minTemp])
@@ -52,10 +55,13 @@ function ForecastDay(props) {
     const useStyles = makeStyles({
         card: {
             marginTop: "20px",
-            width: "250px",
+            maxWidth: "250px",
             height: "170px",
             backgroundImage: weatherCSS,
-            overflow: 'auto'
+            overflow: 'auto',
+            '@media (max-width: 1060px)': {
+                maxWidth: "150px"
+            }
         }
     })
 
@@ -67,13 +73,14 @@ function ForecastDay(props) {
             <div className="dayTitle">{dayOfTheWeek}</div>
             <Card className={classes.card}>
                 <div className="ForecastsTemp">{`${maxTemp}\u00B0 - ${minTemp}\u00B0`}</div>
+                <div className="minimizeForecastTemp">{avgT}</div>
                 <div className="nightAndDayLayout">
                     <div>
                         <div>{`${dayTime.info}`}</div>
                         <img src={`${dayTime.imgURL}`} alt={`${dayTime.info}`} />
                     </div>
                     <Divider orientation="vertical" flexItem={true} />
-                    <div>
+                    <div className="nightInfo">
                         <div>{`${nightTime.info}`}</div>
                         <img src={`${nightTime.imgURL}`} alt={`${nightTime.info}`} />
                     </div>

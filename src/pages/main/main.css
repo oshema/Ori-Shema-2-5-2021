@@ -7,11 +7,11 @@
 
 .mainImg { 
     position: absolute;
-    background: linear-gradient(to right,#fdfdfd67,#fdfdfd67, #fdfdfd67), url(../../images/clouds-731260.jpg) no-repeat top center;
+    background-image: linear-gradient(to right,#fdfdfd67,#fdfdfd67, #fdfdfd67), url(../../images/clouds-731260.jpg) no-repeat top center;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 100vh;
-    width: 100vw;
+    height: auto;
+    width: 100%;
 }
 
 .searchLogoContainer{
@@ -32,6 +32,17 @@
     margin-left: 4px;
     margin-top: 2px;
     font-size: 25px;
+}
+
+@media only screen and (max-width: 900px){
+   .searchLogoContainer{
+       display: none;
+   }
+   .topHeroContainer{
+       flex-direction: column;
+       margin-left: 50%;
+       transform: translateX(-50%);
+   }
 }
 
 

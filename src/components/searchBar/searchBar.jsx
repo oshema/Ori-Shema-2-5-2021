@@ -47,16 +47,24 @@ function SearchBar() {
 
     // Material UI Styling //
     const useStyles = makeStyles(() => ({
-        root: {
+        list: {
             position: "absolute",
             width: '100%',
             maxWidth: 600,
             overflow: 'auto',
             maxHeight: 135,
             backgroundColor: "rgba(148, 240, 240, 0.075);",
+            '@media (max-width: 900px)': {
+                maxWidth: 300,
+                maxHeight: 100
+            },
+
         },
         searchIcon: {
-            fontSize: "50px"
+            fontSize: "50px",
+            '@media (max-width: 900px)': {
+                display: "none"
+            }
         },
     }));
 
@@ -67,7 +75,7 @@ function SearchBar() {
     return (
         <div>
             <div>
-                <div>
+                <div className="searchBarContainer">
                     <TextField
                         className="searchBar"
                         label="What's The Weather In..."
@@ -76,7 +84,7 @@ function SearchBar() {
                         value={searchQuery}
                         onChange={e => { autoCompleteAPI(e.target.value) }}
                     />
-                    <ButtonBase onClick={() => autoCompleteAPI(searchQuery)}>
+                    <ButtonBase className={classes.searchIcon} onClick={() => autoCompleteAPI(searchQuery)}>
                         <SearchSharpIcon className={classes.searchIcon} />
                     </ButtonBase>
                 </div>
@@ -85,7 +93,7 @@ function SearchBar() {
                     :
                     searchList &&
                     <ClickAwayListener onClickAway={() => setSearchList('')}>
-                        <List className={classes.root} >
+                        <List className={classes.list} >
                             {searchList.map(item =>
                                 <SearchItem
                                     key={item.key}

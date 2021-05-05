@@ -16,16 +16,6 @@ function Favorites() {
         dispatch(fetchFavoritesData())
     }, [])
 
-    // Material UI Styling //
-    const useStyles = makeStyles(() => ({
-        root: {
-
-        },
-    }));
-
-    const classes = useStyles();
-    // Material UI Styling //
-
     return (
         <div className="mainImg">
             <div>

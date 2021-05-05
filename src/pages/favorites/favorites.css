@@ -13,6 +13,8 @@
     margin-left: 50%;
     transform: translateX(-50%);
     margin-top: 20px;
+    width: 100%;
+    text-align: center;
 }
 
 .starImage{
@@ -22,4 +24,14 @@
     transform: translateX(-50%);
     opacity: 0.5;
     margin-top: 100px;
+}
+
+@media only screen and (max-width: 750px){
+    .favoritesItemsLayout{
+        flex-direction: column;
+    }
+    .starImage{
+        width: 50px;
+        height: 50px;
+    }
 }

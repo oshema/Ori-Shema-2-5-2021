@@ -17,6 +17,14 @@
     font-family: 'Poiret One', cursive;
 }
 
+.titleFavorite{
+    margin-top: 5px;
+    font-size: 40px;
+    font-weight: 500;
+    text-align: center;
+    font-family: 'Poiret One', cursive;
+}
+
 .tempAndIconLayout{
     display: flex;
     justify-content: center;
@@ -29,11 +37,21 @@
     font-weight: 800;
 }
 
+.tempFavorite{
+    font-size: 50px;
+    font-weight: 800;
+}
+
 .icon{
     padding-top: 3px;
     width: 80px;
     height: 60px;
-    
+}
+
+.iconFavorite{
+    padding-top: 3px;
+    width: 80px;
+    height: 60px;
 }
 
 .info{
@@ -47,5 +65,36 @@
     text-align: center;
     margin-top: 10px;
     margin-left: 3px;
+}
+
+@media only screen and (max-width: 1000px){
+    .iconFavorite{
+        display: none;
+    }
+    .tempFavorite{
+        font-size: 16px;
+        font-weight: 600;
+    }
+    .titleFavorite{
+        margin-top: 1px;
+        font-size: 20px;
+    }
+}
+
+@media only screen and (max-width: 900px){
+    .icon{
+        display: none;
+    }
+    .temp{
+        font-size: 26px;
+        font-weight: 600;
+    }
+    .weatherTitle{
+        margin-top: 2px;
+        font-size: 27px;
+    }
+    .favoriteButton{
+        margin-top: 5px;
+    }
 }
 

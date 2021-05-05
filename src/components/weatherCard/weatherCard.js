@@ -49,11 +49,30 @@ function WeatherCard(props) {
     const useStyles = makeStyles({
         card: {
             marginTop: "20px",
-            width: "250px",
+            maxWidth: "250px",
             height: "240px",
             backgroundImage: weatherCSS,
-            overflow: 'auto'
-        }
+            overflow: 'auto',
+            '@media (max-width: 900px)': {
+                maxHeight: "150px",
+                marginTop: "80px",
+                marginLeft: "20px"
+            }
+        },
+        favoriteCards: {
+            marginTop: "20px",
+            width: "200px",
+            height: "240px",
+            backgroundImage: weatherCSS,
+            overflow: 'auto',
+            '@media (max-width: 1000px)': {
+                width: "150px",
+            },
+            '@media (max-width: 750px)': {
+                height: "75px",
+
+            }
+        },
     })
 
     const classes = useStyles();
@@ -64,17 +83,17 @@ function WeatherCard(props) {
             <>
                 {clickable ?
                     <ButtonBase onClick={() => redirectFromFavorites()}>
-                        <Card className={classes.card}>
-                            <div className="weatherTitle">
+                        <Card className={classes.favoriteCards}>
+                            <div className="titleFavorite">
                                 {`${location}`}
                             </div>
                             <div>
                                 <div className="tempAndIconLayout">
-                                    <div className="temp">
+                                    <div className="tempFavorite">
                                         {`${temperature}\u00B0`}
                                     </div>
                                     <div>
-                                        <img className="icon" src={`${imgURL}`} alt={`${info}`} />
+                                        <img className="iconFavorite" src={`${imgURL}`} alt={`${info}`} />
                                     </div>
                                 </div>
                                 <div className="info">

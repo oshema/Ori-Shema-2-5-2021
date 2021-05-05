@@ -28,6 +28,12 @@ function SearchItem({ city, country, locationKey, clearList }) {
                 cursor: 'pointer',
                 backgroundColor: theme.palette.grey[100],
             },
+            '@media (max-width: 900px)': {
+                maxWidth: 270,
+            },
+            '@media (max-width: 600px)': {
+                width: "100%",
+            },
         },
     }));
 
