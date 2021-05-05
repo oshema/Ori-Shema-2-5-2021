@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './searchBar.css';
-import SearchItem from '../searchItem/searchItem';
+import SearchItem from './searchItem';
 import axios from 'axios';
 import { makeStyles } from '@material-ui/core/styles';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
@@ -9,7 +9,6 @@ import SearchSharpIcon from '@material-ui/icons/SearchSharp';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import List from '@material-ui/core/List';
 import { ButtonBase } from '@material-ui/core';
-
 
 function SearchBar() {
 
@@ -53,7 +52,7 @@ function SearchBar() {
             width: '100%',
             maxWidth: 600,
             overflow: 'auto',
-            maxHeight: 195,
+            maxHeight: 135,
             backgroundColor: "rgba(148, 240, 240, 0.075);",
         },
         searchIcon: {

@@ -2,6 +2,7 @@ const initialState = {
     loading: false,
     favoritesData: [],
     locationKeys: [],
+    locationNames: [],
     error: ''
 }
 
@@ -10,13 +11,15 @@ const favoritesReducer = (state = initialState, action) => {
         case 'ADD_FAVORITE':
             return {
                 ...state,
-                locationKeys: [...state.locationKeys, action.payload],
+                locationKeys: [...state.locationKeys, action.payload.locationKey],
+                locationNames: [...state.locationNames, action.payload.locationName],
                 error: ""
             }
         case 'REMOVE_FAVORITE':
             return {
                 ...state,
-                locationKeys: state.locationKeys.filter(key => action.payload !== key),
+                locationKeys: state.locationKeys.filter(key => action.payload.locationKey !== key),
+                locationNames: state.locationNames.filter(name => action.payload.locationName !== name),
                 error: ""
             }
         case 'ADD_FAVORITE_FAILURE':

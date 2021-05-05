@@ -1,9 +1,8 @@
 .forecastLayout{
-    width: 100vw;
-    margin-left: 50%;
-    transform: translateX(-50%);
-    margin-top: 100px;
+    width: 100vw; 
+    margin-top: 50px;
     display: flex;
     justify-content: space-evenly;
-    border: 2px solid black;
+    border-top: 3px solid rgba(255, 255, 255, 0.288);
+    background-color: rgba(245, 245, 245, 0.884);
 }

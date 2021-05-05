@@ -23,6 +23,7 @@ function SearchItem({ city, country, locationKey, clearList }) {
         listItem: {
             height: 45,
             width: 570,
+            fontSize: "15px",
             '&:hover': {
                 cursor: 'pointer',
                 backgroundColor: theme.palette.grey[100],
@@ -38,11 +39,11 @@ function SearchItem({ city, country, locationKey, clearList }) {
             <div className="searchItemLayout">
                 <ButtonBase onClick={() => fetchWeather()}>
                     <ListItem className={classes.listItem}>
-                        <span>{`${country} / ${city} - ${locationKey}`}</span>
+                        <span>{`${country} / ${city}`}</span>
                     </ListItem>
                 </ButtonBase>
                 <div className="favoriteButtonLayout">
-                    <FavoriteButton locationKey={locationKey} />
+                    <FavoriteButton locationKey={locationKey} locationName={city} />
                 </div>
             </div>
             <Divider />

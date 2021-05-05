@@ -7,7 +7,7 @@ import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import { makeStyles } from '@material-ui/core/styles';
 
-function FavoriteButton({ locationKey }) {
+function FavoriteButton({ locationKey, locationName, iconSize }) {
 
     const [isFavorite, setIsFavorite] = useState(false)
 
@@ -16,7 +16,6 @@ function FavoriteButton({ locationKey }) {
     const favoritesKeys = favoritesData.locationKeys
 
     useEffect(() => {
-        console.log("key ", locationKey, " fav ", favoritesKeys)
         checkIfFavorite(locationKey, favoritesKeys)
     }, [locationKey, favoritesKeys])
 
@@ -30,17 +29,19 @@ function FavoriteButton({ locationKey }) {
 
     const addOrRemoveFromFavorites = () => {
         if (isFavorite)
-            dispatch(removeFavorite(locationKey))
+            dispatch(removeFavorite(locationKey, locationName))
         else
-            dispatch(addLocationToFavorites(locationKey))
+            dispatch(addLocationToFavorites(locationKey, locationName))
     }
 
     // Material UI Styling //
     const useStyles = makeStyles({
         emptyHeart: {
+            fontSize: iconSize,
             color: "rgb(128, 128, 128)"
         },
         fullHeart: {
+            fontSize: iconSize,
             color: "rgb(233, 48, 88);"
         }
     })

@@ -11,10 +11,22 @@ function Main() {
         <div className="mainImg">
             <div className="topHeroContainer">
                 <div>
-                    <CurrentWeather />
+                    <div className="searchLogoContainer">
+                        <img className="searchImg" src={'./cloudSearch.png'} />
+                        <div>
+
+                            <div className="searchTitle">
+                                Cloud Search
+                            </div>
+                            <div className="searchSubtitle">
+                                Your way to get around the weather
+                            </div>
+                        </div>
+                    </div>
+                    <SearchBar />
                 </div>
                 <div>
-                    <SearchBar />
+                    <CurrentWeather />
                 </div>
             </div>
             <WeatherForecast />

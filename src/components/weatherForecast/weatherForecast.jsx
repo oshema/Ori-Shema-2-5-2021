@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import './weatherForecast.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchForecastData } from '../../redux/actions/fiveDayForecastActions';

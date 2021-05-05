@@ -1,18 +1,21 @@
 import axios from 'axios';
 
-export const addLocationToFavorites = (key) => {
+export const addLocationToFavorites = (key, city) => {
     return async (dispatch, getState) => {
         if (getState().favorites.locationKeys.length > 4)
             dispatch(addFavoriteFailure("You can only have 5 favorites"))
         else
-            dispatch(addFavorite(key))
+            dispatch(addFavorite(key, city))
     }
 }
 
-export const addFavorite = (locationKey) => {
+export const addFavorite = (locationKey, locationName) => {
     return {
         type: 'ADD_FAVORITE',
-        payload: locationKey,
+        payload: {
+            locationKey,
+            locationName
+        }
     }
 }
 
@@ -24,10 +27,13 @@ export const addFavoriteFailure = (error) => {
     }
 }
 
-export const removeFavorite = (locationKey) => {
+export const removeFavorite = (locationKey, locationName) => {
     return {
         type: 'REMOVE_FAVORITE',
-        payload: locationKey,
+        payload: {
+            locationKey,
+            locationName
+        }
     }
 }
 
@@ -66,7 +72,6 @@ export const fetchFavoritesData = () => {
             }
         })
         const favoritesDataList = await Promise.all(favoritesDataPromises)
-        console.log(favoritesDataList)
         //Check for errors
         const isError = favoritesDataList.filter(data => data.err)
         if (isError.length === 0) {

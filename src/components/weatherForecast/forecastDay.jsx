@@ -1,5 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
+import './forecastDay.css';
+import { setCssOfWeather } from '../../utilities/DynamicCardCssBackground';
+import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
+import Divider from '@material-ui/core/Divider';
 
 function ForecastDay(props) {
 
@@ -10,6 +14,7 @@ function ForecastDay(props) {
     const [dayOfTheWeek, setDayOfTheWeek] = useState('')
     const [maxTemp, setMaxTemp] = useState('')
     const [minTemp, setMinTemp] = useState('')
+    const [weatherCSS, setWeatherCSS] = useState("linear-gradient(to top, #fff1eb 0%, #ace0f9 100%)")
 
 
     useEffect(() => {
@@ -19,6 +24,12 @@ function ForecastDay(props) {
         setMaxTemp(temp.Maximum.Value)
         setMinTemp(temp.Minimum.Value)
     }, [props])
+
+    useEffect(() => {
+        const avgTemp = (maxTemp + minTemp) / 2
+        const cssBackground = setCssOfWeather(avgTemp)
+        setWeatherCSS(cssBackground)
+    }, [maxTemp, minTemp])
 
 
     const extractIconData = (values) => {
@@ -37,15 +48,38 @@ function ForecastDay(props) {
         return newDateFormat.split(" ")[0]
     }
 
+    // Material UI Styling //
+    const useStyles = makeStyles({
+        card: {
+            marginTop: "20px",
+            width: "250px",
+            height: "170px",
+            backgroundImage: weatherCSS,
+            overflow: 'auto'
+        }
+    })
+
+    const classes = useStyles();
+    // Material UI Styling //
+
     return (
-        <Card>
-            <div>{dayOfTheWeek}</div>
-            <div>{`day: ${dayTime.info}`}</div>
-            <img src={`${dayTime.imgURL}`} alt={`${dayTime.info}`} />
-            <div>{`night: ${nightTime.info}`}</div>
-            <img src={`${nightTime.imgURL}`} alt={`${nightTime.info}`} />
-            <div>{`Temp - ${maxTemp} - ${minTemp}`}</div>
-        </Card>
+        <div className="forecastCardLayout">
+            <div className="dayTitle">{dayOfTheWeek}</div>
+            <Card className={classes.card}>
+                <div className="ForecastsTemp">{`${maxTemp}\u00B0 - ${minTemp}\u00B0`}</div>
+                <div className="nightAndDayLayout">
+                    <div>
+                        <div>{`${dayTime.info}`}</div>
+                        <img src={`${dayTime.imgURL}`} alt={`${dayTime.info}`} />
+                    </div>
+                    <Divider orientation="vertical" flexItem={true} />
+                    <div>
+                        <div>{`${nightTime.info}`}</div>
+                        <img src={`${nightTime.imgURL}`} alt={`${nightTime.info}`} />
+                    </div>
+                </div>
+            </Card>
+        </div>
     )
 }
 
