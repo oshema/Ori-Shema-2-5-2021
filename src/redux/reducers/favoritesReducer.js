@@ -28,7 +28,6 @@ const favoritesReducer = (state = initialState, action) => {
                 ...state,
                 limitError: action.error
             }
-
         case 'FETCH_FAVORITES_REQUEST':
             return {
                 ...state,

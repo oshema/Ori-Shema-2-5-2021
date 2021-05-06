@@ -17,7 +17,6 @@ function Favorites() {
     }, [])
 
     return (
-
         <div className="mainImg">
             <div>
                 <img className="starImage" src={'./favorite_star.png'} />

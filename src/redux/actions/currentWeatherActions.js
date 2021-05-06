@@ -38,7 +38,5 @@ export const fetchWeatherData = (locationKey, city) => {
             else
                 dispatch(fetchWeatherFailure(err.message))
         }
-
     }
-
 } 

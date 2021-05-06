@@ -23,13 +23,6 @@ export const addFavorite = (locationKey, locationName) => {
     }
 }
 
-export const addFavoriteFailure = (error) => {
-    return {
-        type: 'ADD_FAVORITE_FAILURE',
-        error
-    }
-}
-
 export const removeFavorite = (locationKey, locationName) => {
     return {
         type: 'REMOVE_FAVORITE',
@@ -37,6 +30,13 @@ export const removeFavorite = (locationKey, locationName) => {
             locationKey,
             locationName
         }
+    }
+}
+
+export const addFavoriteFailure = (error) => {
+    return {
+        type: 'ADD_FAVORITE_FAILURE',
+        error
     }
 }
 

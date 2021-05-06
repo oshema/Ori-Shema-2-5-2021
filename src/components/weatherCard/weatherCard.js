@@ -11,7 +11,6 @@ import Card from '@material-ui/core/Card';
 import FavoriteButton from '../favoriteButton/favoriteButton';
 import { ButtonBase } from '@material-ui/core';
 
-
 function WeatherCard(props) {
     const { location,
         temperature,
@@ -37,14 +36,12 @@ function WeatherCard(props) {
         setWeatherCSS(cssBackground)
     }, [imageURL, temperature])
 
-
     const redirectFromFavorites = () => {
         dispatch(fetchWeatherData(locationKey, location))
         dispatch(fetchForecastData(locationKey))
         let path = `/`;
         history.push(path);
     }
-
 
     // Material UI Styling //
     const useStyles = makeStyles({
@@ -68,6 +65,9 @@ function WeatherCard(props) {
             height: "240px",
             backgroundImage: weatherCSS,
             overflow: 'auto',
+            '&:hover': {
+                boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)'
+            },
             '@media (max-width: 1000px)': {
                 width: "150px",
             },
@@ -75,6 +75,11 @@ function WeatherCard(props) {
                 height: "75px",
             }
         },
+        button: {
+            '&:hover': {
+                cursor: 'pointer',
+            },
+        }
     })
 
     const classes = useStyles();

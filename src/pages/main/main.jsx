@@ -14,7 +14,6 @@ function Main() {
                     <div className="searchLogoContainer">
                         <img className="searchImg" src={'./cloudSearch.png'} />
                         <div>
-
                             <div className="searchTitle">
                                 Cloud Search
                             </div>

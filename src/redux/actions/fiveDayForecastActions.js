@@ -35,7 +35,5 @@ export const fetchForecastData = (locationKey) => {
             else
                 dispatch(fetchForecastFailure(err.message))
         }
-
     }
-
 } 
